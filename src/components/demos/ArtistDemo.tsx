@@ -182,6 +182,40 @@ const PaperTypeOptions = () => {
   );
 };
 
+const PriceOptions = () => {
+  const [price, setPrice] = useState<number>(100);
+  const shippingRate = 5;
+  const printRate = 50;
+  const serviceRate = 0.10;
+  const totalFees = (shippingRate + printRate + (price * serviceRate));
+  const total = price + totalFees;
+
+  return (
+    <>
+    <div style={{ 
+      padding: '4px', 
+      margin: '2px', 
+      display: 'flex', 
+      flexDirection: 'row', 
+      gap: '10px',
+      justifyContent: 'flex-start',
+    }}>
+      <div style={{ marginRight: '10px' }}>Your Profit:</div>
+      <label>
+        <input 
+          type="number" 
+          min={totalFees} 
+          placeholder={totalFees.toString()}
+          onChange={(e) => setPrice(parseFloat(e.target.value) || 0)}
+        />
+      </label>
+    </div>
+    <p style={{ margin: '0px 0px 0px 40px', fontSize: '12px' }}>{`Shipping: $${shippingRate}, Print: $${printRate}, Service: $${total * serviceRate}%`}</p>
+    <p style={{ margin: '0px 0px 10px 40px', fontSize: '12px' }}>{`Customer is Charged: $${total} Total (You make ${total - totalFees} dollars)`}</p>
+    </>
+  );
+};
+
 const PrintSizeOptions = () => {
   return (
     <div style={{ 
@@ -370,6 +404,7 @@ const ArtistDemo:React.FC = () => {
               <h2 style={{ margin: '10px 0 0 0' }}>Print Settings</h2>
               <PaperTypeOptions />
               <PrintSizeOptions />
+              <PriceOptions />
               <button
                 onClick={() => handlePublish()}
                 style={styles.publishButton}
