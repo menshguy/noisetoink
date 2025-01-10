@@ -183,12 +183,12 @@ const PaperTypeOptions = () => {
 };
 
 const PriceOptions = () => {
-  const [price, setPrice] = useState<number>(100);
+  const [profit, setProfit] = useState<number>(50);
   const shippingRate = 5;
   const printRate = 50;
   const serviceRate = 0.10;
-  const totalFees = (shippingRate + printRate + (price * serviceRate));
-  const total = price + totalFees;
+  const serviceFee = (shippingRate + printRate + profit) * serviceRate
+  const total = profit + shippingRate + printRate + serviceFee;
 
   return (
     <>
@@ -204,14 +204,18 @@ const PriceOptions = () => {
       <label>
         <input 
           type="number" 
-          min={totalFees} 
-          placeholder={totalFees.toString()}
-          onChange={(e) => setPrice(parseFloat(e.target.value) || 0)}
+          min={shippingRate + printRate} 
+          value={profit}
+          onChange={(e) => setProfit(parseFloat(e.target.value) || 0)}
         />
       </label>
     </div>
-    <p style={{ margin: '0px 0px 0px 40px', fontSize: '12px' }}>{`Shipping: $${shippingRate}, Print: $${printRate}, Service: $${total * serviceRate}%`}</p>
-    <p style={{ margin: '0px 0px 10px 40px', fontSize: '12px' }}>{`Customer is Charged: $${total} Total (You make ${total - totalFees} dollars)`}</p>
+    <p style={{ margin: '0px 0px 0px 40px', fontSize: '12px' }}>
+      {`Shipping Fee: $${shippingRate}, Printer Fee: $${printRate}, Service Fee: $${serviceFee}`}
+    </p>
+    <p style={{ margin: '0px 0px 10px 40px', fontSize: '12px' }}>
+      <strong>{`Customer is Charged: $${total} Total (You make ${profit} dollars)`}</strong>
+    </p>
     </>
   );
 };
@@ -292,12 +296,20 @@ const ShareModal = ({ closeModal }: { closeModal: () => void }) => {
   );
 };
 
+const RunSketchButton = ({ handleRunSketch, styles }: { handleRunSketch: () => void, styles: React.CSSProperties }) => {
+  return (
+    <button onClick={handleRunSketch} style={styles}>
+      Run Sketch
+    </button>
+  );
+};
+
 const ArtistDemo:React.FC = () => {
   const [code, setCode] = useState<string>(startCode);
   const [sketch, setSketch] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-
+  console.log("sketch", sketch);
   const handleRunSketch = () => {
     setSketch(code);
   }
@@ -305,6 +317,11 @@ const ArtistDemo:React.FC = () => {
   const handlePublish = () => {
     console.log("Publish button clicked");
     setIsModalOpen(true);
+  };
+
+  const handleReset = () => {
+    setCode(startCode);
+    setSketch(null);
   };
 
   const closeModal = () => {
@@ -370,6 +387,12 @@ const ArtistDemo:React.FC = () => {
       backgroundColor: "purple",
       color: "white"
     } as React.CSSProperties,
+    resetButton: {
+      padding: '10px',
+      margin: '0px',
+      backgroundColor: "red",
+      color: "white"
+    } as React.CSSProperties,
     printSettingsContainer: {
       display: 'flex',
       flexDirection: 'column',
@@ -384,13 +407,14 @@ const ArtistDemo:React.FC = () => {
 
       <div style={styles.actionsContainer}>
         <GenerativeOptions />
-
-        <button
-            onClick={() => handleRunSketch()}
-            style={styles.runSketchButton}
-          >
-            Run Sketch
-        </button>
+        {sketch && (
+          <> 
+            <RunSketchButton handleRunSketch={handleRunSketch} styles={styles.runSketchButton} />
+            <button onClick={handleReset} style={styles.resetButton}>
+              Reset
+            </button>
+          </>
+        )}
       </div>
 
       <div style={styles.contentContainer}>
@@ -398,7 +422,7 @@ const ArtistDemo:React.FC = () => {
           <CodeEditor code={code} setCode={setCode} styles={styles.editor} />
         </div>
         <div style={styles.p5SketchRunnerContainer}>
-          {sketch && (
+          {sketch ? (
             <div style={styles.printSettingsContainer}>
               <P5SketchRunner sketchCode={sketch} styles={styles.p5SketchRunner} />
               <h2 style={{ margin: '10px 0 0 0' }}>Print Settings</h2>
@@ -409,9 +433,11 @@ const ArtistDemo:React.FC = () => {
                 onClick={() => handlePublish()}
                 style={styles.publishButton}
               >
-                Publish
-            </button>
+                  Publish
+              </button>
             </div>
+          ) : (
+            <RunSketchButton handleRunSketch={handleRunSketch} styles={styles.runSketchButton} />
           )}
         </div>
       </div>
