@@ -48,12 +48,12 @@ function App() {
         </div>
         <div className="explainer-item">
           <img src={sellImg} className="logo" alt="Sell Image" />
-          <h2>Sell $$$</h2>
+          <h2>Generate Link</h2>
           <p>Generate a unique purchase link to your artwork. Share your link with customers, where they can interact with your piece and buy a print.</p>
         </div>
         <div className="explainer-item">
           <img src={customerLogo} className="logo" alt="Print Image" />
-          <h2>Make $$$</h2>
+          <h2>Share & Sell</h2>
           <p>We'll handle printing and shipping! Thats it!</p>
         </div>
       </div>

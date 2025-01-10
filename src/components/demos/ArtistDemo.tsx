@@ -101,8 +101,9 @@ const P5SketchRunner = ({ sketchCode, styles }: { sketchCode: string; styles: Re
 
         // Create a new p5 instance for the provided sketch code
         if (canvasRef.current) {
-          window.p5Instance = new p5((_p) => {
+          window.p5Instance = new p5((p) => {
             try {
+              console.log("Running sketch code:", p);
               eval(sketchCode);
               setError(null);
             } catch (e: any) {
@@ -297,17 +298,15 @@ const ArtistDemo:React.FC = () => {
       flexDirection: 'row',
       minWidth: '100%',
       height: '100%',
-      gap: '10px'
+      gap: '25px'
     } as React.CSSProperties,
     editorContainer: {
-      flex: 1,
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
     } as React.CSSProperties,
     editor: {
-      flex: 1,
       minWidth: '50%',
       height: '100%',
       textAlign: 'left',
@@ -315,7 +314,6 @@ const ArtistDemo:React.FC = () => {
       overflow: 'auto',
     } as React.CSSProperties  ,
     p5SketchRunnerContainer: {
-      flex: 1,
       minWidth: '50%',
       display: 'flex',
       flexDirection: 'column',
