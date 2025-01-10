@@ -101,7 +101,7 @@ const P5SketchRunner = ({ sketchCode, styles }: { sketchCode: string; styles: Re
 
         // Create a new p5 instance for the provided sketch code
         if (canvasRef.current) {
-          window.p5Instance = new p5((p) => {
+          window.p5Instance = new p5((_p) => {
             try {
               eval(sketchCode);
               setError(null);
