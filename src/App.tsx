@@ -129,22 +129,19 @@ function App() {
               </div>
             </div>
         </div>
+
+        <div className="disclaimer">
+          <div className="disclaimer-item">
+            <h3>Always Free</h3>
+            <p>We make money by adding a small fee to every sale. We will never charge you a dime.</p>
+          </div>
+          <div className="disclaimer-item">
+            <h3>Your Code is Yours</h3>
+            <p>We use your code solely to bring your creations to life. We will never share your code with anyone or use it for any other purpose.</p>
+          </div>
+        </div>
         
       </section>
-
-      <section className="disclaimer">
-        <div className="disclaimer-item">
-          <h3>Always Free</h3>
-          <p>We make money by adding a small fee to every sale you make.</p>
-        </div>
-        <div className="disclaimer-item">
-          <h3>Your Code is Yours</h3>
-          <p>We use your code solely to bring your creations to life and will never make it publicly accessible.</p>
-        </div>
-      </section>
-
-
-    
 
       {/* <h2 className="section-title">How it works:</h2>
       <div className="explainer">
