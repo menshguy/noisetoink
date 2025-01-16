@@ -3,8 +3,8 @@
 import {useEffect, useState} from 'react'
 import artistLogo from './assets/artist.svg'
 import customerLogo from './assets/customer.svg'
-import uploadImg from './assets/upload.svg'
-import sellImg from './assets/sell.svg'
+// import uploadImg from './assets/upload.svg'
+// import sellImg from './assets/sell.svg'
 import './App.css'
 
 function App() {
