@@ -426,6 +426,7 @@ const ArtistDemo:React.FC = () => {
             <div style={styles.printSettingsContainer}>
               <P5SketchRunner sketchCode={sketch} styles={styles.p5SketchRunner} />
               <h2 style={{ margin: '10px 0 0 0' }}>Print Settings</h2>
+              <p style={{ margin: '0px 0px 10px 0px' }}>Configure the print options you want to offer your customers.</p>
               <PaperTypeOptions />
               <PrintSizeOptions />
               <PriceOptions />
