@@ -436,14 +436,18 @@ const ArtistDemo:React.FC = () => {
         </button>
       </div>
 
-      <SplitPane >
+      <SplitPane split="vertical" defaultSize="50%" minSize={50} {...({} as any)} >
+        <div style={{ height: '100%', width: '100%' }}>
           <CodeEditor code={code} setCode={setCode} styles={styles.editor} />
+        </div>
+        <div style={{ height: '100%', width: '100%' }}>
           {sketch && (
             <>
               <P5SketchRunner sketchCode={sketch} styles={styles.p5SketchRunner} />
               <PrintConfig handlePublish={handlePublish} />
             </>
           )}
+        </div>
       </SplitPane>
 
       {isModalOpen && <ShareModal closeModal={closeModal} />}
