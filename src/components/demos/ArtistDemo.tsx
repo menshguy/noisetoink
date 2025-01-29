@@ -430,29 +430,20 @@ const ArtistDemo:React.FC = () => {
 
       <div style={styles.actionsContainer}>
         <GenerativeOptions />
-        {sketch && (
-          <> 
-            <RunSketchButton handleRunSketch={handleRunSketch} styles={styles.runSketchButton} />
-            <button onClick={handleReset} style={styles.resetButton}>
-              Reset
-            </button>
-          </>
-        )}
+        <RunSketchButton handleRunSketch={handleRunSketch} styles={styles.runSketchButton} />
+        <button onClick={handleReset} style={styles.resetButton}>
+          Reset
+        </button>
       </div>
 
-      // @ts-ignore
-      <SplitPane split="vertical" minSize={50} defaultSize={100}>
-        <div>
+      <SplitPane >
           <CodeEditor code={code} setCode={setCode} styles={styles.editor} />
-        </div>
-        <div>
-          {sketch ? (
+          {sketch && (
             <>
               <P5SketchRunner sketchCode={sketch} styles={styles.p5SketchRunner} />
               <PrintConfig handlePublish={handlePublish} />
             </>
-          ) : null}
-        </div>
+          )}
       </SplitPane>
 
       {isModalOpen && <ShareModal closeModal={closeModal} />}
