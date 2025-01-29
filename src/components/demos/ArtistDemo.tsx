@@ -440,16 +440,19 @@ const ArtistDemo:React.FC = () => {
         )}
       </div>
 
+      // @ts-ignore
       <SplitPane split="vertical" minSize={50} defaultSize={100}>
+        <div>
           <CodeEditor code={code} setCode={setCode} styles={styles.editor} />
+        </div>
+        <div>
           {sketch ? (
             <>
               <P5SketchRunner sketchCode={sketch} styles={styles.p5SketchRunner} />
               <PrintConfig handlePublish={handlePublish} />
             </>
-          ) : (
-            <RunSketchButton handleRunSketch={handleRunSketch} styles={styles.runSketchButton} />
-          )}
+          ) : null}
+        </div>
       </SplitPane>
 
       {isModalOpen && <ShareModal closeModal={closeModal} />}
