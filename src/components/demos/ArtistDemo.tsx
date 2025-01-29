@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import p5 from 'p5';
+import SplitPane from 'react-split-pane-v2';
 import Controlled from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
@@ -304,6 +305,34 @@ const RunSketchButton = ({ handleRunSketch, styles }: { handleRunSketch: () => v
   );
 };
 
+const PrintConfig = ({handlePublish}: {handlePublish: () => void}) => {
+  
+  const styles = {
+    publishButton: {
+      padding: '10px',
+      margin: '0px',
+      backgroundColor: "purple",
+      color: "white"
+    } as React.CSSProperties,
+  }
+
+  return (
+    <>
+    <h2 style={{ margin: '10px 0 0 0' }}>Print Settings</h2>
+    <p style={{ margin: '0px 0px 10px 0px' }}>Configure the print options you want to offer your customers.</p>
+    <PaperTypeOptions />
+    <PrintSizeOptions />
+    <PriceOptions />
+    <button
+      onClick={() => handlePublish()}
+      style={styles.publishButton}
+      >
+        Publish
+    </button>
+    </>
+  )
+}
+
 const ArtistDemo:React.FC = () => {
   const [code, setCode] = useState<string>(startCode);
   const [sketch, setSketch] = useState<string | null>(null);
@@ -381,12 +410,6 @@ const ArtistDemo:React.FC = () => {
       backgroundColor: "rgb(49 195 6)",
       color: "white"
     } as React.CSSProperties,
-    publishButton: {
-      padding: '10px',
-      margin: '0px',
-      backgroundColor: "purple",
-      color: "white"
-    } as React.CSSProperties,
     resetButton: {
       padding: '10px',
       margin: '0px',
@@ -417,31 +440,17 @@ const ArtistDemo:React.FC = () => {
         )}
       </div>
 
-      <div style={styles.contentContainer}>
-        <div style={styles.editorContainer}>
+      <SplitPane split="vertical" minSize={50} defaultSize={100}>
           <CodeEditor code={code} setCode={setCode} styles={styles.editor} />
-        </div>
-        <div style={styles.p5SketchRunnerContainer}>
           {sketch ? (
-            <div style={styles.printSettingsContainer}>
+            <>
               <P5SketchRunner sketchCode={sketch} styles={styles.p5SketchRunner} />
-              <h2 style={{ margin: '10px 0 0 0' }}>Print Settings</h2>
-              <p style={{ margin: '0px 0px 10px 0px' }}>Configure the print options you want to offer your customers.</p>
-              <PaperTypeOptions />
-              <PrintSizeOptions />
-              <PriceOptions />
-              <button
-                onClick={() => handlePublish()}
-                style={styles.publishButton}
-              >
-                  Publish
-              </button>
-            </div>
+              <PrintConfig handlePublish={handlePublish} />
+            </>
           ) : (
             <RunSketchButton handleRunSketch={handleRunSketch} styles={styles.runSketchButton} />
           )}
-        </div>
-      </div>
+      </SplitPane>
 
       {isModalOpen && <ShareModal closeModal={closeModal} />}
     </div>

@@ -169,6 +169,7 @@ a#nav-logo {
 
 
 #header {
+    margin-top: 100px;
     padding: 60px; 
     display: flex;
     flex-direction: column;
@@ -221,14 +222,54 @@ a#nav-logo {
     color: #bbbbbc;
 }
 
+.showcase-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px 60px;
+    background: rgba(255, 255, 255, 0.02);
+    margin: 0 20px;
+}
+
+.showcase-image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.showcase-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Desktop styles */
+@media screen and (min-width: 768px) {
+    .showcase-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 60px;
+    }
+
+    .showcase-image {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    #showcase {
+        flex: 1;
+        max-width: 50%;
+    }
+}
+
 #showcase {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    padding: 40px 20px;
-    background: rgba(255, 255, 255, 0.02);
-    margin: 40px 0;
+    margin: 0;
 }
 
 #showcase h2{
@@ -243,30 +284,14 @@ a#nav-logo {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.showcase-image {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 20px;
-}
-
-.showcase-image img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 12px;
-    transition: opacity 0.3s ease;
 }
 
 .showcase-steps {
     flex: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
     padding: 0 10px;
     margin: 0px 10px;
@@ -317,24 +342,29 @@ a#nav-logo {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    transition: all 0.3s ease-out;
 }
 
 .step:hover {
     background: rgba(255, 255, 255, 0.05);
-    transform: translateX(10px);
+    transform: scale(1.02);
 }
 
 .step h3 {
     color: white;
     font-size: 24px;
-    margin-bottom: 12px;
+    margin-bottom: 0px;
     font-weight: 600;
     text-align: center;
+    background-image: linear-gradient(90deg, rgb(89, 77, 255) 0%, rgb(40, 242, 249) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .step p {
     color: #bbbbbc;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.5;
 }
 
@@ -343,10 +373,9 @@ a#nav-logo {
 }
 
 .step span {
-    background-image: linear-gradient(90deg, rgb(89, 77, 255) 0%, rgb(40, 242, 249) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-decoration: underline;
+    font-style: italic;
 }
 
 .share-link {
@@ -393,7 +422,7 @@ a#nav-logo {
 
 .disclaimer {
     padding: 20px;
-    background: rgba(255, 255, 255, 0.02);
+    /* background: rgba(255, 255, 255, 0.02); */
     border-radius: 12px;
     display: flex;
     flex-direction: row;
@@ -480,11 +509,27 @@ a#nav-logo {
     text-align: center;
 }
 
+#cta-section {
+    background: none;
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    border-radius: 8px;
+    padding: 20px 40px;
+    color: #bbbbbc;
+    margin: 40px auto 0px;
+    max-width: 800px;
+    text-align: center;
+}
+
+#cta-section h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
 .cta-container {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 35px auto 0px;
 }
 
 .cta-button {
@@ -492,18 +537,24 @@ a#nav-logo {
     align-items: center;
     gap: 12px;
     padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.03);
+    background: #262626;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     color: white;
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.53s ease;
 }
 
 .cta-button:hover {
-    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    background-image: linear-gradient(90deg, rgb(89, 77, 255) 0%, rgb(40, 242, 249) 100%);
+    border: 1px solid rgba(255, 255, 255, 1);
+    /* background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
     transform: translateY(-2px);
 }
 
