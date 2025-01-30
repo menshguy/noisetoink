@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import p5 from 'p5';
-import SplitPane from 'react-split-pane-v2';
+import Split from 'react-split';
+import { useDevice } from '../../context/DeviceContext';
 import Controlled from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
@@ -337,6 +338,7 @@ const ArtistDemo:React.FC = () => {
   const [code, setCode] = useState<string>(startCode);
   const [sketch, setSketch] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const {isMobile} = useDevice();
 
   console.log("sketch", sketch);
   const handleRunSketch = () => {
@@ -360,10 +362,7 @@ const ArtistDemo:React.FC = () => {
   const styles = {
     pageContainer: {
       display: 'flex', 
-      flexDirection: 'column', 
-      height: '100vh',
-      width: '100vw',
-      gap: '10px'
+      flexDirection: 'column',
     } as React.CSSProperties,
     actionsContainer: {
       display: 'flex', 
@@ -375,10 +374,7 @@ const ArtistDemo:React.FC = () => {
     } as React.CSSProperties,
     contentContainer: {
       display: 'flex', 
-      flexDirection: 'row',
-      minWidth: '100%',
-      height: '100%',
-      gap: '25px'
+      flexDirection: isMobile ? 'column' : 'row',
     } as React.CSSProperties,
     editorContainer: {
       display: 'flex',
@@ -387,14 +383,9 @@ const ArtistDemo:React.FC = () => {
       alignItems: 'flex-start',
     } as React.CSSProperties,
     editor: {
-      minWidth: '50%',
-      height: '100%',
       textAlign: 'left',
-      resize: 'horizontal',
-      overflow: 'auto',
     } as React.CSSProperties  ,
     p5SketchRunnerContainer: {
-      minWidth: '50%',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-start',
@@ -436,19 +427,30 @@ const ArtistDemo:React.FC = () => {
         </button>
       </div>
 
-      <SplitPane split="vertical" defaultSize="50%" minSize={50} {...({} as any)} >
-        <div style={{ height: '100%', width: '100%' }}>
-          <CodeEditor code={code} setCode={setCode} styles={styles.editor} />
-        </div>
-        <div style={{ height: '100%', width: '100%' }}>
-          {sketch && (
-            <>
-              <P5SketchRunner sketchCode={sketch} styles={styles.p5SketchRunner} />
-              <PrintConfig handlePublish={handlePublish} />
-            </>
-          )}
-        </div>
-      </SplitPane>
+      {/* <Split direction="horizontal"  >
+        
+        
+      </Split> */}
+
+      <Split direction={isMobile ? "vertical" : "horizontal"} sizes={[50,50]} style={styles.contentContainer}>
+        <CodeEditor 
+          code={code} 
+          setCode={setCode} 
+          styles={styles.editor} 
+        />
+        {sketch ? (
+          <div>
+            <P5SketchRunner 
+              sketchCode={sketch}
+              styles={styles.p5SketchRunner} 
+            />
+            <PrintConfig 
+              handlePublish={handlePublish} 
+              // styles={styles.printSettingsContainer} 
+            />
+          </div>
+        ): <div>No sketch to display</div>}
+      </Split>
 
       {isModalOpen && <ShareModal closeModal={closeModal} />}
     </div>
