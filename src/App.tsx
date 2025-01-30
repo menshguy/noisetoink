@@ -55,7 +55,7 @@ function App() {
 
       <section id="header">
         <h1 id="main-title">
-          <span>Generative art...</span> <span className="cursive">unplugged</span>
+          <span>Generative Art...</span> <span className="cursive">unplugged</span>
         </h1>
 
         <h3 id="subtitle">
@@ -103,12 +103,12 @@ function App() {
             <div className="showcase-steps">
               <div className="step">
                 <h3>1. Create</h3>
-                <p>Bring your artwork to life in seconds with our <span>in-browser editor.</span></p>
+                <p>Bring your artwork to life with our <span>in-browser editor.</span></p>
                 {/* <img src="./steps-editor.png" alt="editor step" /> */}
               </div>
               <div className="step">
                 <h3>2. Share</h3>
-                <p>Each piece gets its own <span>unique purchase link</span> that you can post and share anywhere.</p>
+                <p>Generate a <span>unique purchase link</span> for each of your pieces that you can share anywhere.</p>
                 <div className="share-link">
                   <input 
                     type="text" 
@@ -125,7 +125,10 @@ function App() {
               </div>
               <div className="step">
                 <h3>3. Sell</h3>
-                <p>Customers can play with your piece, genereate a unique 1 of 1 piece, and order it as a physical print on a variety of products like <span>posters, mugs, prints, stickers, and more!</span></p>
+                <p>
+                  Customers can purchase a 1 of 1 print of your piece on a variety of products like <span>posters, mugs, prints, stickers, and more!</span>
+                  You configure the print options and the price - no hidden fees or surcharges.
+                </p>
               </div>
             </div>
           </div>
