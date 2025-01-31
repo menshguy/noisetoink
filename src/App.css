@@ -13,6 +13,7 @@ html, body, #main {
 :root {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    --nav-height: 60px; /* adjust this value based on your nav's actual height */
 }
 
 * {
@@ -82,11 +83,6 @@ input[type="submit"] {
     font-weight: 600;
 }
 
-a {
-    color: #0099ff;
-    text-decoration: underline;
-}
-
 #main-nav {
     align-items: center;
     display: flex;
@@ -95,7 +91,7 @@ a {
     height: min-content;
     justify-content: space-between;
     overflow: visible;
-    padding: 10px 10px;
+    padding: 10px 30px;
     position: relative;
 }
 
@@ -129,6 +125,11 @@ a {
     padding: 0;
     position: relative;
     width: min-content;
+}
+
+a {
+    color: #0099ff;
+    text-decoration: underline;
 }
 
 #main-nav a {
@@ -168,13 +169,68 @@ a#nav-logo {
 }
 
 
-#header {
-    margin-top: 100px;
+#hero {
     padding: 60px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: calc(100vh - var(--nav-height));
+    position: relative;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.scroll-text {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-family: Manrope, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    transform: rotate(45deg);
+    animation: bounce 2s infinite;
+    margin-top: -5px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    40% {
+        transform: translateY(-10px) rotate(45deg);
+    }
+    60% {
+        transform: translateY(-5px) rotate(45deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 #main-title {

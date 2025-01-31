@@ -9,10 +9,10 @@ import './App.css'
 
 function App() {
   const products = [
-    { name: 'Posters', image: './hero-poster.jpg' },
-    { name: 'Mugs', image: './hero-mugs.jpg' },
-    { name: 'Prints', image: './hero-print.jpg' },
-    { name: 'Stickers', image: './hero-stickers.jpg' },
+    { name: 'Posters', image: '/hero-poster.jpg' },
+    { name: 'Mugs', image: '/hero-mugs.jpg' },
+    { name: 'Prints', image: '/hero-print.jpg' },
+    { name: 'Stickers', image: '/hero-stickers.jpg' },
   ];
 
   const [currentProduct, setCurrentProduct] = useState(0);
@@ -44,8 +44,8 @@ function App() {
           <a href="/" id="nav-logo">
             <span className="noise">Noise</span> to <span className="ink">Ink</span>
           </a>
-          <a href="/demo/artist">Artist Demo</a>
-          <a href="/demo/customer">Customer Demo</a>
+          {/* <a href="/demo/artist">Artists Demo</a>
+          <a href="/demo/customer">Customer Demo</a> */}
         </div>
         <div className="nav-right">
           <a title="I am the developer of this project! Feel free to email me directly with feedback, ideas, or just to chat!" href="mailto:fenster.js@gmail.com">Contact Me</a>
@@ -53,7 +53,7 @@ function App() {
       </nav>
 
 
-      <section id="header">
+      <section id="hero">
         <h1 id="main-title">
           <span>Generative Art...</span> <span className="cursive">unplugged</span>
         </h1>
@@ -64,7 +64,7 @@ function App() {
           your Generative Artwork as <span>Physical Prints</span>.
         </h3>
         
-        <section id="cta-section">
+        <div id="cta-section">
           <div className="cta-container">
             <a href="/demo/artist" className="cta-button">
               <img src={artistLogo} className="cta-icon" alt="Artist icon" />
@@ -75,7 +75,21 @@ function App() {
               Try Customer Demo
             </a>
           </div>
-        </section>
+        </div>
+
+        <div 
+          className="scroll-indicator" 
+          onClick={() => {
+            document.querySelector('.showcase-wrapper')?.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }}
+        >
+          <div className="scroll-text">Learn More</div>
+          <div className="scroll-arrow"></div>
+        </div>
+        
       </section>
 
       <div className="showcase-wrapper">
