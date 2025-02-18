@@ -116,13 +116,13 @@ function App() {
           <div className="showcase-container">
             <div className="showcase-steps">
               <div className="step">
-                <h3>1. Create</h3>
-                <p>Bring your artwork to life with our <span>in-browser editor.</span></p>
+                <h3>1. In-Browser Editor</h3>
+                <p>Create and edit your artwork using our <span>in-browser code editor.</span></p>
                 {/* <img src="./steps-editor.png" alt="editor step" /> */}
               </div>
               <div className="step">
-                <h3>2. Share</h3>
-                <p>Generate a <span>unique purchase link</span> for each of your pieces that you can share anywhere.</p>
+                <h3>2. Share *Instantly*</h3>
+                <p>Generate a <span>shareable link</span> for each project that you can post anywhere.</p>
                 <div className="share-link">
                   <input 
                     type="text" 
@@ -138,10 +138,9 @@ function App() {
                 </div>
               </div>
               <div className="step">
-                <h3>3. Sell</h3>
+                <h3>3. Sell Easily</h3>
                 <p>
-                  Customers can purchase a 1 of 1 print of your piece on a variety of products like <span>posters, mugs, prints, stickers, and more!</span>
-                  You configure the print options and the price - no hidden fees or surcharges.
+                  Simply select the products you want sell and our print partners will handle the rest for you!
                 </p>
               </div>
             </div>
