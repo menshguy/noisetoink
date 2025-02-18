@@ -6,6 +6,7 @@ import customerLogo from './assets/customer.svg'
 // import uploadImg from './assets/upload.svg'
 // import sellImg from './assets/sell.svg'
 import './App.css'
+import EmailSubscribe from './components/EmailSubscribe';
 
 function App() {
   const products = [
@@ -61,7 +62,7 @@ function App() {
         <h3 id="subtitle">
           The fastest way to create, share, and sell 
           <br/>
-          your Generative Artwork as <span>Physical Prints</span>.
+          your generative artwork as <span>Prints</span>.
         </h3>
         
         <div id="cta-section">
@@ -75,6 +76,7 @@ function App() {
               Try Customer Demo
             </a>
           </div>
+          <EmailSubscribe />
         </div>
 
         <div 

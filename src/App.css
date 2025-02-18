@@ -618,3 +618,55 @@ a#nav-logo {
     height: 24px;
     filter: url(#svg-gradient);
 }
+
+.email-subscribe-section {
+  width: 100%;
+  padding: 20px 0px;
+}
+
+.email-form {
+  display: flex;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.email-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.email-submit-button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 140px;
+}
+
+.email-submit-button:hover {
+  background-color: #0056b3;
+}
+
+.email-submit-button:disabled {
+  background-color: #646f7a;
+}
+
+.email-success-section {
+    margin-top: 20px;
+    font-size: 18px;
+    color: rgb(102, 200, 102);
+}
