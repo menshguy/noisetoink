@@ -39,7 +39,7 @@ createRoot(document.getElementById('root')!).render(
             position="bottom-right" // Optional - one of: 'top-left', 'top-right', 'bottom-left', 'bottom-right'
             // prefillEmail="TODO: ADD USERS EMAIL"
             formId="mzzdljjz"
-            containerStyle={{
+            containerstyle={{
               'border-radius': '16px',
               'box-shadow': '0 2px 8px rgba(0, 0, 0, 0.1)',
               'background': '#4b4b64',
