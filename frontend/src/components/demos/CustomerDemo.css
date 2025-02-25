@@ -1,0 +1,107 @@
+.customer-demo {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.artwork-section {
+  flex: 1;
+}
+
+.artwork-container {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sketch-container {
+  margin-bottom: 1rem;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.controls-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.config-section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.config-section p {
+  background: #fff;
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.pickers-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.config-item {
+  margin-bottom: 1.5rem;
+}
+
+.config-item label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: black;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.config-item span {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background-color: #28a745;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+p {
+  color: #666;
+  margin-bottom: 1rem;
+}
