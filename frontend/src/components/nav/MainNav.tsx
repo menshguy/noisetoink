@@ -11,8 +11,9 @@ const MainNav = () => {
 				<a href="/demo/customer">Customer Demo</a> */}
 			</div>
 			<div className="nav-right">
-				<a href="/signin" className="nav-link">Sign In</a>
-				<a href="/signup" className="nav-button">Sign Up</a>
+        {/* TODO: Host Server Somewhere and uncomment these routes. Right now server/db isn't running */}
+				{/* <a href="/signin" className="nav-link">Sign In</a> */}
+				{/* <a href="/signup" className="nav-button">Sign Up</a> */}
 				<a title="I am the developer of this project! Feel free to email me directly with feedback, ideas, or just to chat!" href="mailto:fenster.js@gmail.com">Contact Me</a>
 			</div>
 		</nav>
