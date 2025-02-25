@@ -6,7 +6,8 @@ import Controlled from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { EditorView } from '@codemirror/view';
-import { FaClipboard, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaClipboard, FaExternalLinkAlt, FaPlay, FaRedo } from 'react-icons/fa';
+import './ArtistDemo.css';
 
 // Extend the Window interface to include p5Instance
 declare global {
@@ -298,11 +299,59 @@ const ShareModal = ({ closeModal }: { closeModal: () => void }) => {
   );
 };
 
-const RunSketchButton = ({ handleRunSketch, styles }: { handleRunSketch: () => void, styles: React.CSSProperties }) => {
+const RunSketchButton = ({ handleClick }: { handleClick: () => void }) => {
+  const buttonStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '10px',
+    borderRadius: '50%',
+    border: 'none',
+    background: 'var(--main-gradient)',
+    cursor: 'pointer',
+    color: 'white',
+    width: '40px',
+    height: '40px',
+    transition: 'transform 0.2s ease',
+    ':hover': {
+      transform: 'scale(1.1)'
+    }
+  }
+
   return (
-    <button onClick={handleRunSketch} style={styles}>
-      Run Sketch
-    </button>
+    <div className="quick-tooltip" title="Run Sketch">
+      <button onClick={handleClick} style={buttonStyles}>
+        <FaPlay />
+      </button>
+    </div>
+  );
+};
+
+const ResetSketchButton = ({ handleClick }: { handleClick: () => void }) => {
+  const buttonStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '10px',
+    borderRadius: '50%',
+    border: 'none',
+    background: 'linear-gradient(90deg, rgb(255, 77, 77) 0%, rgb(249, 40, 40) 100%)',
+    cursor: 'pointer',
+    color: 'white',
+    width: '40px',
+    height: '40px',
+    transition: 'transform 0.2s ease',
+    ':hover': {
+      transform: 'scale(1.1)'
+    }
+  }
+
+  return (
+    <div className="quick-tooltip" title="Reset Sketch">
+      <button onClick={handleClick} style={buttonStyles}>
+        <FaRedo />
+      </button>
+    </div>
   );
 };
 
@@ -367,7 +416,8 @@ const ArtistDemo:React.FC = () => {
     actionsContainer: {
       display: 'flex', 
       flexDirection: 'row', 
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
+      padding: '20px 10px',
       alignItems: 'center',
       width: '100%',
       gap: '10px'
@@ -389,6 +439,7 @@ const ArtistDemo:React.FC = () => {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-start',
+      boxShadow: '0 0 20px rgba(180, 177, 255, 0.9), 0 0 40px rgba(200, 242, 255, 0.7)',
     } as React.CSSProperties,
     p5SketchRunner: {
       display: 'flex',
@@ -417,20 +468,13 @@ const ArtistDemo:React.FC = () => {
 
   return (
     <div style={styles.pageContainer}>
-      <h1>Artist Demo</h1>
+      {/* <h1>Artist Demo</h1> */}
 
       <div style={styles.actionsContainer}>
-        <GenerativeOptions />
-        <RunSketchButton handleRunSketch={handleRunSketch} styles={styles.runSketchButton} />
-        <button onClick={handleReset} style={styles.resetButton}>
-          Reset
-        </button>
+        {/* <GenerativeOptions /> */}
+        <RunSketchButton handleClick={handleRunSketch} />
+        <ResetSketchButton handleClick={handleReset} />
       </div>
-
-      {/* <Split direction="horizontal"  >
-        
-        
-      </Split> */}
 
       <Split direction={isMobile ? "vertical" : "horizontal"} sizes={[50,50]} style={styles.contentContainer}>
         <CodeEditor 
@@ -449,7 +493,7 @@ const ArtistDemo:React.FC = () => {
               // styles={styles.printSettingsContainer} 
             />
           </div>
-        ): <div>No sketch to display</div>}
+        ): <div>Click the Play button to run your sketch.</div>}
       </Split>
 
       {isModalOpen && <ShareModal closeModal={closeModal} />}

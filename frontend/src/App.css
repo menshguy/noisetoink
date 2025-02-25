@@ -14,6 +14,7 @@ html, body, #main {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     --nav-height: 60px; /* adjust this value based on your nav's actual height */
+    --main-gradient: linear-gradient(90deg, rgb(89, 77, 255) 0%, rgb(40, 242, 249) 100%);
 }
 
 * {

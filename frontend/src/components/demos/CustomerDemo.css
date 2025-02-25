@@ -11,14 +11,22 @@
 }
 
 .artwork-container {
-  background: #fff;
+  /* background: #fff; */
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .sketch-container {
   margin-bottom: 1rem;
+}
+
+.p5Canvas {
+  box-shadow: 0 0 20px rgba(89, 77, 255, 0.3), 0 0 40px rgba(40, 242, 249, 0.2);
 }
 
 .button-container {

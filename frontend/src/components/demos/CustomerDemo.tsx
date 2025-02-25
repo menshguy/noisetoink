@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5';
 import { HslColorPicker } from 'react-colorful';
+import TutorialPrompt from './TutorialPrompt'
 import './CustomerDemo.css';
 
 interface SketchConfig {
@@ -26,7 +27,7 @@ const CustomerDemo: React.FC = () => {
 
     const sketch = (p: p5) => {
       p.setup = () => {
-        const canvas = p.createCanvas(400, 400);
+        const canvas = p.createCanvas(600, 600);
         canvas.parent(sketchRef.current!);
         p.colorMode(p.HSL)
       };
@@ -59,6 +60,7 @@ const CustomerDemo: React.FC = () => {
       {/* Left Section - Artwork Display */}
       <div className="artwork-section">
         <div className="artwork-container">
+          <TutorialPrompt message="Here customers can view and play with your piece." />
           <div ref={sketchRef} className="sketch-container" />
           <div className="button-container">
             <button onClick={handleRegenerate}>Regenerate</button>
@@ -72,6 +74,8 @@ const CustomerDemo: React.FC = () => {
         {/* Customer Config Section */}
         <div className="config-section">
           <h2>Customer Configuration</h2>
+
+          <TutorialPrompt message="Here is where your customer can configure any variables you have exposed to the customer." />
           
           <div className="pickers-section">
             <div className="config-item">
