@@ -32,6 +32,9 @@ backend/.env
 backend/.flaskenv
 backend/*.db
 
+# PRD
+prd
+
 # IDE
 .vscode/
 .idea/

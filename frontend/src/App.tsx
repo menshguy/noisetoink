@@ -4,10 +4,14 @@ import customerLogo from './assets/customer.svg'
 // import uploadImg from './assets/upload.svg'
 // import sellImg from './assets/sell.svg'
 import EmailSubscribe from './components/EmailSubscribe'
+import { useAppMode } from './context/AppModeContext';
 import './App.css'
 import './components/auth/Auth.css'
 
 function App() {
+  const {appMode} = useAppMode();
+  const [currentProduct, setCurrentProduct] = useState(0);
+
   const products = [
     { name: 'Posters', image: '/hero-poster.jpg' },
     { name: 'Mugs', image: '/hero-mugs.jpg' },
@@ -15,7 +19,6 @@ function App() {
     { name: 'Stickers', image: '/hero-stickers.jpg' },
   ];
 
-  const [currentProduct, setCurrentProduct] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -47,21 +50,34 @@ function App() {
         <h3 id="subtitle">
           The fastest way to create, share, and sell 
           <br/>
-          your generative artwork as <span>Prints</span>.
+          stunning <span>prints</span> of your generative artwork.
         </h3>
         
         <div id="cta-section">
-          <div className="cta-container">
-            <a href="/demo/artist" className="cta-button">
-              <img src={artistLogo} className="cta-icon" alt="Artist icon" />
-              Try Artist Demo
-            </a>
-            <a href="/demo/customer" className="cta-button">
-              <img src={customerLogo} className="cta-icon" alt="Customer icon" />
-              Try Customer Demo
-            </a>
-          </div>
-          <EmailSubscribe />
+            {appMode === "demo" ? (
+                <>
+                <div className="cta-container">
+                  <a href="/demo/artist" className="cta-button">
+                    <img src={artistLogo} className="cta-icon" alt="Artist icon" />
+                    Try Artist Demo
+                  </a>
+                  <a href="/demo/customer" className="cta-button">
+                    <img src={customerLogo} className="cta-icon" alt="Customer icon" />
+                    Try Customer Demo
+                  </a>
+                </div>
+                <EmailSubscribe />
+                </>
+              ) : (
+                <div className="cta-container">
+                <a href="/signin" className="cta-button">
+                  Sign In
+                </a>
+                <a href="/signup" className="cta-button">
+                  Sign Up
+                </a>
+                </div>
+            )}
         </div>
 
         <div 
