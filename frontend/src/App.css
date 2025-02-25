@@ -58,8 +58,7 @@ p {
     color: #777777;
 }
 
-/* Example styles for buttons and inputs */
-input[type="email"], input[type="submit"] {
+.email-subscribe-section input[type="email"], .email-subscribe-section input[type="submit"] {
     -webkit-appearance: none;
     width: 100%;
     line-height: 1.4em;
@@ -71,12 +70,12 @@ input[type="email"], input[type="submit"] {
     font-size: 16px;
 }
 
-input[type="email"] {
+.email-subscribe-section input[type="email"] {
     background: #1a1a1a;
     color: #fdfdfd;
 }
 
-input[type="submit"] {
+.email-subscribe-section input[type="submit"] {
     background: #262626;
     color: #dcdcdc;
     cursor: pointer;
