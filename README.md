@@ -1,50 +1,41 @@
-# React + TypeScript + Vite
+# To Run the App
+## To start the backend:
+source venv/bin/activate && python run.py
+## To start dev server
+npm run dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# To Query the DB
+## To Run Flask Sheel so you can query the DB
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+source venv/bin/activate && flask shell
 ```
+## To Exit
+Type exit() and press Enter
+Type quit() and press Enter
+Press Ctrl + D (on Unix/Mac) or Ctrl + Z (on Windows)
+
+## Get all users
+User.query.all()
+
+## Get user by email
+User.query.filter_by(email='example@email.com').first()
+
+## Get user by ID
+User.query.get(1)  # Replace 1 with the user ID
+
+## Count total users
+User.query.count()
+
+## Get verified users
+User.query.filter_by(is_verified=True).all()
+
+## Delete a user
+user = User.query.get(1)  # Get user with ID 1
+db.session.delete(user)
+db.session.commit()
+
+## Update a user
+user = User.query.get(1)
+user.email = 'newemail@example.com'
+db.session.commit()

@@ -1,12 +1,12 @@
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import {useEffect, useState} from 'react'
 import artistLogo from './assets/artist.svg'
 import customerLogo from './assets/customer.svg'
 // import uploadImg from './assets/upload.svg'
 // import sellImg from './assets/sell.svg'
+import MainNav from './components/nav/MainNav'
+import EmailSubscribe from './components/EmailSubscribe'
 import './App.css'
-import EmailSubscribe from './components/EmailSubscribe';
+import './components/auth/Auth.css'
 
 function App() {
   const products = [
@@ -28,31 +28,17 @@ function App() {
   return (
     <>
       <svg width="0" height="0">
-        <defs>
-          <linearGradient id="gradient-filter" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style={{ stopColor: 'rgb(89, 77, 255)' }} />
-            <stop offset="100%" style={{ stopColor: 'rgb(40, 242, 249)' }} />
-          </linearGradient>
-          <filter id="svg-gradient">
-            <feImage href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(89, 77, 255)'/%3E%3Cstop offset='100%25' stop-color='rgb(40, 242, 249)'/%3E%3C/linearGradient%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E"/>
-            <feComposite operator="in" in2="SourceGraphic"/>
-          </filter>
-        </defs>
-      </svg>
-
-      <nav id="main-nav">
-        <div className="nav-left">
-          <a href="/" id="nav-logo">
-            <span className="noise">Noise</span> to <span className="ink">Ink</span>
-          </a>
-          {/* <a href="/demo/artist">Artists Demo</a>
-          <a href="/demo/customer">Customer Demo</a> */}
-        </div>
-        <div className="nav-right">
-          <a title="I am the developer of this project! Feel free to email me directly with feedback, ideas, or just to chat!" href="mailto:fenster.js@gmail.com">Contact Me</a>
-        </div>
-      </nav>
-
+				<defs>
+				<linearGradient id="gradient-filter" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style={{ stopColor: 'rgb(89, 77, 255)' }} />
+					<stop offset="100%" style={{ stopColor: 'rgb(40, 242, 249)' }} />
+				</linearGradient>
+				<filter id="svg-gradient">
+					<feImage href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(89, 77, 255)'/%3E%3Cstop offset='100%25' stop-color='rgb(40, 242, 249)'/%3E%3C/linearGradient%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E"/>
+					<feComposite operator="in" in2="SourceGraphic"/>
+				</filter>
+				</defs>
+			</svg>
 
       <section id="hero">
         <h1 id="main-title">

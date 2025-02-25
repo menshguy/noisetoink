@@ -83,84 +83,10 @@ input[type="submit"] {
     font-weight: 600;
 }
 
-#main-nav {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    height: min-content;
-    justify-content: space-between;
-    overflow: visible;
-    padding: 10px 30px;
-    position: relative;
-}
-
-#main-nav .nav-left {
-    align-items: center;
-    display: flex
-;
-    flex: none;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 24px;
-    height: min-content;
-    justify-content: flex-start;
-    overflow: visible;
-    padding: 0;
-    position: relative;
-    width: min-content;
-}
-
-#main-nav .nav-right {
-    align-content: center;
-    align-items: center;
-    display: flex;
-    flex: none;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 12px;
-    height: min-content;
-    justify-content: flex-end;
-    overflow: visible;
-    padding: 0;
-    position: relative;
-    width: min-content;
-}
 
 a {
     color: #0099ff;
     text-decoration: underline;
-}
-
-#main-nav a {
-    font-family: Manrope, sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    color: rgb(221, 221, 221);
-    font-size: 16px;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-a#nav-logo {
-    font-size: 28px;
-    font-weight: 800;
-}
-
-#nav-logo .ink {
-    background-image: linear-gradient(90deg, rgb(89, 77, 255) 0%, rgb(40, 242, 249) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#nav-logo .noise {
-    /* background-image: url('/noise_texture.png'); */
-    background-image: url('/noise_texture_svg.svg');
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 150px 150px; /* or use 'contain', or specify dimensions like '100px 100px' */
 }
 
 .cursive {
