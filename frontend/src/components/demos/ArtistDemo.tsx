@@ -7,8 +7,9 @@ import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { EditorView } from '@codemirror/view';
 import { FaClipboard, FaExternalLinkAlt, FaPlay, FaRedo, FaChevronDown, FaChevronUp, FaDollarSign } from 'react-icons/fa';
-import './ArtistDemo.css';
+import { useNav } from '../../context/NavContext';
 import TutorialPrompt from './TutorialPrompt';
+import './ArtistDemo.css';
 
 // Extend the Window interface to include p5Instance
 declare global {
@@ -471,6 +472,7 @@ const ArtistDemo:React.FC = () => {
   const [sketch, setSketch] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {isMobile} = useDevice();
+  const {navHeight} = useNav();
 
   console.log("sketch", sketch);
   const handleRunSketch = () => {
@@ -518,7 +520,7 @@ const ArtistDemo:React.FC = () => {
     contentContainer: {
       display: 'flex', 
       flexDirection: isMobile ? 'column' : 'row',
-      height: isMobile ? `calc(100vh - 60px)` : 'calc(100vh - 60px)' //TODO: import NavContext from my personal site.
+      height: isMobile ? `calc(100vh - ${navHeight}px)` : `calc(100vh - ${navHeight}px)` //TODO: import NavContext from my personal site.
     } as React.CSSProperties,
     editorContainer: {
       display: 'flex',

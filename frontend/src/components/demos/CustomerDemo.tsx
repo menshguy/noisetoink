@@ -3,6 +3,7 @@ import p5 from 'p5';
 import { HslColorPicker } from 'react-colorful';
 import TutorialPrompt from './TutorialPrompt'
 import './CustomerDemo.css';
+import { useNav } from '../../context/NavContext';
 
 interface SketchConfig {
   strokeColor: { h: number; s: number; l: number };
@@ -68,6 +69,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ config, onClose }) => {
 };
 
 const CustomerDemo: React.FC = () => {
+  const {navHeight} = useNav();
   const [config, setConfig] = useState<SketchConfig>({
     strokeColor: { h: 0, s: 50, l: 50 },
     backgroundColor: { h: 180, s: 50, l: 90 },
@@ -85,7 +87,7 @@ const CustomerDemo: React.FC = () => {
 
     const sketch = (p: p5) => {
       p.setup = () => {
-        const canvas = p.createCanvas(600, 600);
+        const canvas = p.createCanvas(500, 500);
         canvas.parent(sketchRef.current!);
         p.colorMode(p.HSL)
       };
@@ -114,7 +116,7 @@ const CustomerDemo: React.FC = () => {
   };
 
   return (
-    <div className="customer-demo">
+    <div className="customer-demo" style={{ height: `calc(100vh - ${navHeight}px)`, maxHeight: '100vh' }}>
       {/* Left Section - Artwork Display */}
       <div className="artwork-section">
         <div className="artwork-container">

@@ -1,4 +1,3 @@
-
 #main-nav {
     align-items: center;
     display: flex;
@@ -8,6 +7,7 @@
     justify-content: space-between;
     overflow: visible;
     padding: 10px 30px;
+    height: 40px;
     /* position: absolute;
     top: 0px;
     left: 0px;
@@ -16,8 +16,7 @@
 
 #main-nav .nav-left {
     align-items: center;
-    display: flex
-;
+    display: flex;
     flex: none;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -76,4 +75,10 @@ a#nav-logo {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 150px 150px; /* or use 'contain', or specify dimensions like '100px 100px' */
+}
+
+@media (min-width: 768px) {
+  #main-nav {
+    height: 60px;
+  }
 }
