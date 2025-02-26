@@ -10,6 +10,63 @@ interface SketchConfig {
   circleSize: number;
 }
 
+interface CheckoutModalProps {
+  config: SketchConfig;
+  onClose: () => void;
+}
+
+const CheckoutModal: React.FC<CheckoutModalProps> = ({ config, onClose }) => {
+  const modalSketchRef = useRef<HTMLDivElement>(null);
+  const p5Instance = useRef<p5 | null>(null);
+
+  useEffect(() => {
+    if (!modalSketchRef.current) return;
+    const { strokeColor, backgroundColor, circleSize } = config;
+
+    const sketch = (p: p5) => {
+      p.setup = () => {
+        const canvas = p.createCanvas(600, 600);
+        canvas.parent(modalSketchRef.current!);
+        p.colorMode(p.HSL)
+      };
+
+      p.draw = () => {
+        p.background(backgroundColor.h, backgroundColor.s, backgroundColor.l);
+        p.stroke(strokeColor.h, strokeColor.s, strokeColor.l);
+        p.noFill();
+        p.circle(p.width / 2, p.height / 2, circleSize * 3);
+      };
+    };
+
+    p5Instance.current = new p5(sketch);
+
+    return () => {
+      p5Instance.current?.remove();
+    };
+  }, [config]);
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h2>Checkout</h2>
+          <button onClick={onClose} className="close-button">&times;</button>
+        </div>
+        <div ref={modalSketchRef} className="modal-sketch-container" />
+        <div className="modal-body">
+          <h3>Your Custom Print</h3>
+          <div className="print-details">
+            <p>Size: 12" x 12"</p>
+            <p>Material: Premium Matte Paper</p>
+            <p>Price: $29.99</p>
+          </div>
+          <button className="primary-button">Complete Purchase</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const CustomerDemo: React.FC = () => {
   const [config, setConfig] = useState<SketchConfig>({
     strokeColor: { h: 0, s: 50, l: 50 },
@@ -17,6 +74,7 @@ const CustomerDemo: React.FC = () => {
     circleSize: 50,
   });
   
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sketchRef = useRef<HTMLDivElement>(null);
   const p5Instance = useRef<p5 | null>(null);
 
@@ -75,7 +133,7 @@ const CustomerDemo: React.FC = () => {
         <div className="config-section">
           <h2>Customer Configuration</h2>
 
-          <TutorialPrompt message="Here is where your customer can configure any variables you have exposed to the customer." />
+          <TutorialPrompt message="Here is where your customer can configure any variables you have exposed to them." />
           
           <div className="pickers-section">
             <div className="config-item">
@@ -107,15 +165,18 @@ const CustomerDemo: React.FC = () => {
             <span>{config.circleSize}</span>
           </div>
 
-          <p>Product selection UI will be implemented using the Printful API</p>
+          {/* Checkout Section */}
+          <TutorialPrompt message="Product selection UI will be implemented using the Printful API" />
           <button 
             className="checkout-button"
-            onClick={() => console.log('Navigate to checkout')}
+            onClick={() => setIsModalOpen(true)}
           >
             Proceed to Checkout
           </button>
         </div>
       </div>
+
+      {isModalOpen && <CheckoutModal config={config} onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 };

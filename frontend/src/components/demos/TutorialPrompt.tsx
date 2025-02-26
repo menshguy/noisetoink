@@ -7,8 +7,8 @@ const TutorialPrompt = ({ message }: { message: string }) => {
         background: "#b6d9e8",
         borderRadius: 10,
         boxShadow: '0 0 10px rgba(0,0,0,0.5)',
-        padding: '20px',
-        margin: '20px',
+        padding: '15px 10px',
+        margin: '10px 0px',
         display: 'flex',
         alignItems: 'center',
         gap: '10px'

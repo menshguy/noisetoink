@@ -42,10 +42,9 @@ createRoot(document.getElementById('root')!).render(
             containerstyle={{
               'border-radius': '16px',
               'box-shadow': '0 2px 8px rgba(0, 0, 0, 0.1)',
-              'background': '#4b4b64',
               'font-family': 'monospace',
-              'font-size': '14px',
-              'padding': '15px'
+              'font-size': '12px !important',
+              'padding': '10px'
             }}
           />
         </BrowserRouter>

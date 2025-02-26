@@ -6,8 +6,9 @@ import Controlled from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { EditorView } from '@codemirror/view';
-import { FaClipboard, FaExternalLinkAlt, FaPlay, FaRedo } from 'react-icons/fa';
+import { FaClipboard, FaExternalLinkAlt, FaPlay, FaRedo, FaChevronDown, FaChevronUp, FaDollarSign } from 'react-icons/fa';
 import './ArtistDemo.css';
+import TutorialPrompt from './TutorialPrompt';
 
 // Extend the Window interface to include p5Instance
 declare global {
@@ -138,121 +139,121 @@ const P5SketchRunner = ({ sketchCode, styles }: { sketchCode: string; styles: Re
   );
 };
 
-const GenerativeOptions = () => {
-  return (
-    <select style={{ padding: '10px', margin: '10px' }}>
-      <option value="p5js">
-        P5.js
-      </option>
-      <option value="processing-python" disabled>
-        Processing (Python) *Coming Soon*
-      </option>
-      <option value="processing" disabled>
-        Processing *Coming Soon*
-      </option>
-    </select>
-  )
-}
+// const GenerativeOptions = () => {
+//   return (
+//     <select style={{ padding: '10px', margin: '10px' }}>
+//       <option value="p5js">
+//         P5.js
+//       </option>
+//       <option value="processing-python" disabled>
+//         Processing (Python) *Coming Soon*
+//       </option>
+//       <option value="processing" disabled>
+//         Processing *Coming Soon*
+//       </option>
+//     </select>
+//   )
+// }
 
-const PaperTypeOptions = () => {
-  return (
-    <div style={{ 
-      padding: '4px', 
-      margin: '2px', 
-      display: 'flex', 
-      flexDirection: 'row', 
-      gap: '10px',
-      justifyContent: 'flex-start',
-    }}>
-      <div style={{ marginRight: '10px' }}>Paper Types:</div>
-      <label>
-        <input type="checkbox" value="glossy" />
-        Glossy
-      </label>
-      <label>
-        <input type="checkbox" value="matte" />
-        Matte
-      </label>
-      <label>
-        <input type="checkbox" value="canvas" />
-        Canvas
-      </label>
-      <label>
-        <input type="checkbox" value="watercolor" />
-        Watercolor
-      </label>
-    </div>
-  );
-};
+// const PaperTypeOptions = () => {
+//   return (
+//     <div style={{ 
+//       padding: '4px', 
+//       margin: '2px', 
+//       display: 'flex', 
+//       flexDirection: 'row', 
+//       gap: '10px',
+//       justifyContent: 'flex-start',
+//     }}>
+//       <div style={{ marginRight: '10px' }}>Paper Types:</div>
+//       <label>
+//         <input type="checkbox" value="glossy" />
+//         Glossy
+//       </label>
+//       <label>
+//         <input type="checkbox" value="matte" />
+//         Matte
+//       </label>
+//       <label>
+//         <input type="checkbox" value="canvas" />
+//         Canvas
+//       </label>
+//       <label>
+//         <input type="checkbox" value="watercolor" />
+//         Watercolor
+//       </label>
+//     </div>
+//   );
+// };
 
-const PriceOptions = () => {
-  const [profit, setProfit] = useState<number>(50);
-  const shippingRate = 5;
-  const printRate = 50;
-  const serviceRate = 0.10;
-  const serviceFee = (shippingRate + printRate + profit) * serviceRate
-  const total = profit + shippingRate + printRate + serviceFee;
+// const PriceOptions = () => {
+//   const [profit, setProfit] = useState<number>(50);
+//   const shippingRate = 5;
+//   const printRate = 50;
+//   const serviceRate = 0.10;
+//   const serviceFee = (shippingRate + printRate + profit) * serviceRate
+//   const total = profit + shippingRate + printRate + serviceFee;
 
-  return (
-    <>
-    <div style={{ 
-      padding: '4px', 
-      margin: '2px', 
-      display: 'flex', 
-      flexDirection: 'row', 
-      gap: '10px',
-      justifyContent: 'flex-start',
-    }}>
-      <div style={{ marginRight: '10px' }}>Your Profit:</div>
-      <label>
-        <input 
-          type="number" 
-          min={shippingRate + printRate} 
-          value={profit}
-          onChange={(e) => setProfit(parseFloat(e.target.value) || 0)}
-        />
-      </label>
-    </div>
-    <p style={{ margin: '0px 0px 0px 40px', fontSize: '12px' }}>
-      {`Shipping Fee: $${shippingRate}, Printer Fee: $${printRate}, Service Fee: $${serviceFee}`}
-    </p>
-    <p style={{ margin: '0px 0px 10px 40px', fontSize: '12px' }}>
-      <strong>{`Customer is Charged: $${total} Total (You make ${profit} dollars)`}</strong>
-    </p>
-    </>
-  );
-};
+//   return (
+//     <>
+//     <div style={{ 
+//       padding: '4px', 
+//       margin: '2px', 
+//       display: 'flex', 
+//       flexDirection: 'row', 
+//       gap: '10px',
+//       justifyContent: 'flex-start',
+//     }}>
+//       <div style={{ marginRight: '10px' }}>Your Profit:</div>
+//       <label>
+//         <input 
+//           type="number" 
+//           min={shippingRate + printRate} 
+//           value={profit}
+//           onChange={(e) => setProfit(parseFloat(e.target.value) || 0)}
+//         />
+//       </label>
+//     </div>
+//     <p style={{ margin: '0px 0px 0px 40px', fontSize: '12px' }}>
+//       {`Shipping Fee: $${shippingRate}, Printer Fee: $${printRate}, Service Fee: $${serviceFee}`}
+//     </p>
+//     <p style={{ margin: '0px 0px 10px 40px', fontSize: '12px' }}>
+//       <strong>{`Customer is Charged: $${total} Total (You make ${profit} dollars)`}</strong>
+//     </p>
+//     </>
+//   );
+// };
 
-const PrintSizeOptions = () => {
-  return (
-    <div style={{ 
-      padding: '4px', 
-      margin: '2px', 
-      display: 'flex', 
-      flexDirection: 'row', 
-      gap: '10px',
-      justifyContent: 'flex-start',
-    }}>
-      <div style={{ marginRight: '10px' }}>Print Sizes:</div>
-      <label>
-        <input type="checkbox" value="a4" />
-        A4
-      </label>
-      <label>
-        <input type="checkbox" value="a3" />
-        A3
-      </label>
-      <label>
-        <input type="checkbox" value="a2" />
-        A2
-      </label>
-      <label>
-        <input type="checkbox" value="a1" />
-        A1
-      </label>
-    </div>
-  );
-};
+// const PrintSizeOptions = () => {
+//   return (
+//     <div style={{ 
+//       padding: '4px', 
+//       margin: '2px', 
+//       display: 'flex', 
+//       flexDirection: 'row', 
+//       gap: '10px',
+//       justifyContent: 'flex-start',
+//     }}>
+//       <div style={{ marginRight: '10px' }}>Print Sizes:</div>
+//       <label>
+//         <input type="checkbox" value="a4" />
+//         A4
+//       </label>
+//       <label>
+//         <input type="checkbox" value="a3" />
+//         A3
+//       </label>
+//       <label>
+//         <input type="checkbox" value="a2" />
+//         A2
+//       </label>
+//       <label>
+//         <input type="checkbox" value="a1" />
+//         A1
+//       </label>
+//     </div>
+//   );
+// };
 
 const ShareModal = ({ closeModal }: { closeModal: () => void }) => {
   const copyToClipboard = () => {
@@ -355,31 +356,113 @@ const ResetSketchButton = ({ handleClick }: { handleClick: () => void }) => {
   );
 };
 
+const Accordion = ({ title, children }: { title: React.ReactNode, children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const styles = {
+    container: {
+      width: '100%',
+      borderRadius: '8px',
+      overflow: 'hidden',
+      marginBottom: '10px',
+      background: 'rgba(255, 255, 255, 0.1)',
+    },
+    header: {
+      padding: '15px',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      cursor: 'pointer',
+      background: 'rgba(255, 255, 255, 0.05)',
+      border: 'none',
+      width: '100%',
+      color: 'white',
+      transition: 'background-color 0.2s ease',
+    },
+    content: {
+      maxHeight: isOpen ? '1000px' : '0',
+      overflow: 'hidden',
+      transition: 'max-height 0.3s ease-in-out',
+    },
+    icon: {
+      transition: 'transform 0.3s ease',
+      transform: isOpen ? 'rotate(180deg)' : 'rotate(0)',
+    }
+  };
+
+  return (
+    <div style={styles.container}>
+      <button onClick={() => setIsOpen(!isOpen)} style={styles.header}>
+        {title}
+        <div style={styles.icon}>
+          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+        </div>
+      </button>
+      <div style={styles.content}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 const PrintConfig = ({handlePublish}: {handlePublish: () => void}) => {
   
   const styles = {
-    publishButton: {
+    printConfigContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
       padding: '10px',
       margin: '0px',
-      backgroundColor: "purple",
-      color: "white"
+      color: "white",
+      width: '100%',
+    } as React.CSSProperties,
+    publishButton: {
+      padding: '10px',
+      margin: '10px 0',
+      width: '100%',
+      backgroundColor: '#4CAF50',
+      color: 'white',
+      border: 'none',
+      borderRadius: '4px',
+      cursor: 'pointer',
+    } as React.CSSProperties,
+    accordionContent: {
+      padding: '15px',
+      width: '100%',
     } as React.CSSProperties,
   }
 
   return (
-    <>
-    <h2 style={{ margin: '10px 0 0 0' }}>Print Settings</h2>
-    <p style={{ margin: '0px 0px 10px 0px' }}>Configure the print options you want to offer your customers.</p>
-    <PaperTypeOptions />
-    <PrintSizeOptions />
-    <PriceOptions />
-    <button
-      onClick={() => handlePublish()}
-      style={styles.publishButton}
-      >
-        Publish
-    </button>
-    </>
+    <div style={styles.printConfigContainer}>
+      
+      <Accordion 
+        title={
+          <div style={{display: 'flex', alignItems: 'center'}}>
+            <FaDollarSign style={{color: 'gold', marginRight: '10px'}}/> 
+            <FaDollarSign style={{color: 'gold', marginRight: '10px'}}/> 
+            <FaDollarSign style={{color: 'gold', marginRight: '10px'}}/> 
+            Print Settings
+            <FaDollarSign style={{color: 'gold', marginRight: '10px', marginLeft: '10px'}}/> 
+            <FaDollarSign style={{color: 'gold', marginRight: '10px'}}/> 
+            <FaDollarSign style={{color: 'gold', marginRight: '10px'}}/> 
+          </div>
+        }>
+        <div style={styles.accordionContent}>
+          <TutorialPrompt message="Configure the product options you want to allow your customers to choose from." />
+          {/* <PaperTypeOptions /> */}
+          {/* <PrintSizeOptions /> */}
+          {/* <PriceOptions /> */}
+          <button
+            onClick={() => handlePublish()}
+            style={styles.publishButton}
+          >
+            Publish
+          </button>
+        </div>
+      </Accordion>
+    </div>
   )
 }
 
@@ -413,18 +496,29 @@ const ArtistDemo:React.FC = () => {
       display: 'flex', 
       flexDirection: 'column',
     } as React.CSSProperties,
-    actionsContainer: {
-      display: 'flex', 
-      flexDirection: 'row', 
-      justifyContent: 'center',
-      padding: '20px 10px',
-      alignItems: 'center',
-      width: '100%',
-      gap: '10px'
-    } as React.CSSProperties,
+    actionsContainer: isMobile ? ({
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'center',
+        padding: '10px 10px',
+        alignItems: 'center',
+        width: '100%',
+        gap: '10px'
+      } as React.CSSProperties) : ({
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'center',
+        padding: '10px 10px',
+        alignItems: 'center',
+        gap: '10px',
+        position: 'absolute',
+        top: 0,
+        left: 'calc(50vw - 60px)'
+    } as React.CSSProperties),
     contentContainer: {
       display: 'flex', 
       flexDirection: isMobile ? 'column' : 'row',
+      height: isMobile ? `calc(100vh - 60px)` : 'calc(100vh - 60px)' //TODO: import NavContext from my personal site.
     } as React.CSSProperties,
     editorContainer: {
       display: 'flex',
@@ -434,6 +528,8 @@ const ArtistDemo:React.FC = () => {
     } as React.CSSProperties,
     editor: {
       textAlign: 'left',
+      height: '100%',
+      overflowY: 'scroll'
     } as React.CSSProperties  ,
     p5SketchRunnerContainer: {
       display: 'flex',
@@ -445,6 +541,12 @@ const ArtistDemo:React.FC = () => {
       display: 'flex',
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
+    } as React.CSSProperties,
+    outputContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
     } as React.CSSProperties,
     runSketchButton: {
       padding: '10px',
@@ -483,7 +585,7 @@ const ArtistDemo:React.FC = () => {
           styles={styles.editor} 
         />
         {sketch ? (
-          <div>
+          <div style={styles.outputContainer}>
             <P5SketchRunner 
               sketchCode={sketch}
               styles={styles.p5SketchRunner} 
